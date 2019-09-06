@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './Components/Header/Header'
+import Footer from './Components/Footer/Footer'
 
 class App extends React.Component {
   constructor() {
@@ -21,9 +22,7 @@ class App extends React.Component {
             Form and Squares here
          </div>
         </section>
-        <footer class="fixed bottom-0 w-100 pv4 ph3 ph5-m ph6-l mid-gray">
-          <small class="f6 db">Made by Mar</small>
-        </footer>
+        <Footer />
       </div>
     );
   }
