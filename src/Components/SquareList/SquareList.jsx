@@ -4,7 +4,7 @@ import Square from '../Square/Square'
 const SquareList = () => {
     return (
         <div>
-         <Square/>
+         <Square text="ão"/>
         </div>);
 };
 
