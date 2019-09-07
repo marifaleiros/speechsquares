@@ -1,11 +1,19 @@
 import React from 'react';
 import Square from '../Square/Square'
 
-const SquareList = () => {
-    return (
-        <div>
-         <Square text="ão"/>
-        </div>);
+class SquareList extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        const { squares } = this.props;
+        return (
+            <div className="flex flex-wrap">
+            {squares.map(s => {
+                return <Square key={s.id} square={s} />
+            })}
+            </div>);
+    }
 };
 
 export default SquareList;
