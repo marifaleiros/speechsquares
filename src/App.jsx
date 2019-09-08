@@ -63,7 +63,7 @@ class App extends React.Component {
   }
 
   deleteSquare = (id, e) => {
-    e.preventDefault();
+    e.stopPropagation();
     this.setState({
       squares: this.state.squares.filter(s => s.id !== id)
     });

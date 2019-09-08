@@ -42,14 +42,13 @@ class Square extends React.Component {
 
         return squareClasses.concat(SPACE, bg, SPACE, border);
     }
-
+   
     speak = () => {
         const { square } = this.props;
         synth.speak(square.text);
     }
 
     showDeleteButton = () => {
-        console.log(this.state.isDeleteButtonHidden)
         if (this.state.isDeleteButtonHidden)
             this.toggleDeleteButtonVisibility();
     }

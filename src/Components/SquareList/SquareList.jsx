@@ -13,8 +13,6 @@ class SquareList extends React.Component {
             </div>
         );
     }
-
-  
 };
 
 export default SquareList;
