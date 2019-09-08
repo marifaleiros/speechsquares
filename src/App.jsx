@@ -6,6 +6,7 @@ import AddSquareForm from './Components/AddSquareForm/AddSquareForm'
 import SquareList from './Components/SquareList/SquareList'
 import uuid from 'uuid'
 import { squareThemes, pickRandomTheme } from './Components/Square/SquareThemes'
+import SettingsModal from './Components/SettingsModal/SettingsModal'
 
 class App extends React.Component {
   constructor() {
@@ -40,12 +41,14 @@ class App extends React.Component {
       ]
     }
   }
+
   render() {
     return (
       <main>
-        <Header />
+        <Header openSettingsModal={this.openSettingsModal} />
         <AddSquareForm onAddSquare={this.onAddSquare} />
         <SquareList squares={this.state.squares} deleteSquare={this.deleteSquare} />
+        <SettingsModal isOpen={this.state.showSettings} closeModal={this.closeModal} />
         <Footer />
       </main>
     );
@@ -69,6 +72,12 @@ class App extends React.Component {
     });
   }
 
+  openSettingsModal = () => {
+    this.setState({ showSettings: true });
+  }
+  closeModal = () => {
+    this.setState({ showSettings: false });
+  }
 }
 
 export default App;

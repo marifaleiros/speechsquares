@@ -1,0 +1,60 @@
+.sb {
+    border-style: solid;
+    border-width: 7px;
+}
+
+.b-red {
+    border-color: #FF8A84 #B30A01 #B30A01 #FF8A84;
+}
+
+.b-red:active {
+    border-color: #B30A01 #FF8A84 #FF8A84 #B30A01;
+}
+
+.b-orange {
+    border-color: #FF9F63 #9B3B00 #9B3B00 #FF9F63;
+}
+
+.b-orange:active {
+    border-color: #9B3B00 #FF8A84 #FF8A84 #9B3B00;
+}
+
+.b-yellow {
+    border-color: #FFE763 #9B8300 #9B8300 #FFE763;
+}
+
+.b-yellow:active {
+    border-color: #9B8300 #FFE763 #FFE763 #9B8300;
+}
+
+.b-purple {
+    border-color: #946ECA #340A70 #340A70 #946ECA;
+}
+
+.b-purple:active {
+    border-color: #340A70 #946ECA #946ECA #340A70;
+}
+
+.b-pink {
+    border-color: #FFF9FD #FD27A9 #FD27A9 #FFF9FD;
+}
+
+.b-pink:active {
+    border-color: #FD27A9 #FFF9FD #FFF9FD #FD27A9;
+}
+
+.b-green {
+    border-color: #5ECAA1 #007046 #007046 #5ECAA1;
+}
+
+.b-green:active {
+    border-color: #007046 #5ECAA1 #5ECAA1 #007046;
+}
+
+.b-blue {
+    border-color: #83B1ED #084CA3 #084CA3 #83B1ED;
+}
+
+.b-blue:active {
+    border-color: #084CA3 #83B1ED #83B1ED #084CA3;
+}

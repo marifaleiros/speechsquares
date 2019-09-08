@@ -1,5 +1,6 @@
 import React from 'react';
 import './Square.css'
+import './SquareThemes.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { squareThemes } from './SquareThemes'
 import synth from '../../libs/Synth'
@@ -18,7 +19,7 @@ class Square extends React.Component {
         let theme = square.theme;
         if (!theme)
             theme = squareThemes.red;
-        const squareClasses = this.mountSquareClasses(theme);
+        const squareClasses = this.buildSquareClasses(theme);
         return (
             <Zoom in={true} timeout={200}>
                 <div className="pa2"
@@ -36,7 +37,7 @@ class Square extends React.Component {
             </Zoom>);
     }
 
-    mountSquareClasses = (theme) => {
+    buildSquareClasses = (theme) => {
         const squareClasses = 'sb shadow-1 w4 h4 grow pointer';
         const SPACE = ' ';
         let bg = `bg-${theme}`;
