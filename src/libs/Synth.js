@@ -1,12 +1,18 @@
 class Synth {
     constructor() {
         this.synth = window.speechSynthesis;
-        this.synth.onvoiceschanged = function() {
-            const voices = this.synth.getVoices();
-            console.log(voices);
-            const voiceUri = "Google português do Brasil"
-            this.voice = voices.filter((v, i, a) => v.voiceURI === voiceUri)[0];
+        this.synth.onvoiceschanged = function () {
+            this.voices = this.synth.getVoices();
+            this.setVoice("Microsoft Maria Desktop - Portuguese(Brazil)");
         }.bind(this);
+    }
+
+    setVoice(voiceUri) {
+        this.voice = this.voices.filter((v, i, a) => v.voiceURI === voiceUri)[0];
+    }
+
+    getVoices() {
+        return this.voices;
     }
 
     speak(text) {

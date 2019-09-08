@@ -4,7 +4,8 @@ export const squareThemes = {
     green: 'green',
     yellow: 'yellow',
     pink: 'pink',
-    orange: 'orange'
+    orange: 'orange',
+    purple: 'purple'
 }
 
 const randomProperty = function (obj) {
