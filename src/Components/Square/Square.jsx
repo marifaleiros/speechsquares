@@ -2,6 +2,7 @@ import React from 'react';
 import './Square.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { squareThemes } from './SquareThemes'
+import synth from '../../libs/Synth'
 
 class Square extends React.Component {
     constructor(props) {
@@ -9,7 +10,9 @@ class Square extends React.Component {
         this.state = {
             isDeleteButtonHidden: true
         }
+       
     }
+
     render() {
         const { square } = this.props;
         let theme = square.theme;
@@ -42,16 +45,7 @@ class Square extends React.Component {
 
     speak = () => {
         const { square } = this.props;
-        const synth = window.speechSynthesis;
-        const utterThis = new SpeechSynthesisUtterance(square.text);
-        const voices = synth.getVoices();
-        console.log(voices);
-        //const voiceUri = "Microsoft Maria Desktop - Portuguese(Brazil)"
-        const voiceUri = "Google português do Brasil"
-        const voice = voices.filter((v, i, a) => v.voiceURI == voiceUri)[0];
-        console.log(voice);
-        utterThis.voice = voice;
-        synth.speak(utterThis);
+        synth.speak(square.text);
     }
 
     showDeleteButton = () => {

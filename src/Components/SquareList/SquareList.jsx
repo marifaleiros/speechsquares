@@ -3,9 +3,6 @@ import Square from '../Square/Square'
 import './SquareList.css'
 
 class SquareList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         const { squares } = this.props;
         return (
