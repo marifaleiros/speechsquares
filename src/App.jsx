@@ -36,12 +36,10 @@ class App extends React.Component {
   }
   render() {
     return (
-      <main className="app">
+      <main>
         <Header />
-        <section className="h-100 w-80 center bg-light-gray pb4">
-          <AddSquareForm onAddSquare={this.onAddSquare} />
-          <SquareList squares={this.state.squares} />
-        </section>
+        <AddSquareForm onAddSquare={this.onAddSquare} />
+        <SquareList squares={this.state.squares} />
         <Footer />
       </main>
     );

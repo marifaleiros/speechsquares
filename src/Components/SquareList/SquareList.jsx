@@ -1,6 +1,7 @@
 import React from 'react';
 import Square from '../Square/Square'
-    
+import './SquareList.css'
+
 class SquareList extends React.Component {
     constructor(props) {
         super(props);
@@ -8,13 +9,12 @@ class SquareList extends React.Component {
     render() {
         const { squares } = this.props;
         return (
-            <div>
-                <div className="flex flex-wrap center">
-                    {squares.map(s => {
-                        return <Square key={s.id} square={s} />
-                    })}
-                </div>
-            </div>);
+            <div className="center mw8 list flex flex-wrap bg-near-white">
+                {squares.map(s => {
+                    return <Square key={s.id} square={s} />
+                })}
+            </div>
+        );
     }
 };
 
