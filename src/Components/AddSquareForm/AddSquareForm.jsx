@@ -10,7 +10,7 @@ class AddSquareForm extends React.Component {
 
     render() {
         return (
-            <div className="bg-blue2 center pa4 cf h-100">
+            <div className="bg-blue2 mw8 center pa4 cf h-100">
                 <input className="f6 f5-l input-reset bn fl black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns br--left-ns"
                     placeholder="type a 'sound' and add it to the board"
                     type="text"
