@@ -18,8 +18,8 @@ class Square extends React.Component {
                     onMouseEnter={this.showDeleteButton}
                     onMouseLeave={this.hideDeleteButton}>
                     {!this.state.isDeleteButtonHidden &&
-                        <div className="tc br-100 bg-near-white delete">
-                            <i className="dib  v-mid fa fa-trash-alt"/>
+                        <div className="tc delete" onClick={this.props.deleteSquare.bind(null, square.id)}>
+                            <i className="fa fa-trash-alt"/>
                         </div>}
                     <p className="db link tc pa4">{square.text}</p>
                 </div>

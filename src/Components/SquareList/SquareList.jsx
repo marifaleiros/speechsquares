@@ -11,11 +11,13 @@ class SquareList extends React.Component {
         return (
             <div className="center mw8 list flex flex-wrap bg-near-white">
                 {squares.map(s => {
-                    return <Square key={s.id} square={s} />
+                    return <Square key={s.id} square={s} deleteSquare={this.props.deleteSquare} />
                 })}
             </div>
         );
     }
+
+  
 };
 
 export default SquareList;

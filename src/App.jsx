@@ -39,7 +39,7 @@ class App extends React.Component {
       <main>
         <Header />
         <AddSquareForm onAddSquare={this.onAddSquare} />
-        <SquareList squares={this.state.squares} />
+        <SquareList squares={this.state.squares} deleteSquare={this.deleteSquare} />
         <Footer />
       </main>
     );
@@ -50,6 +50,13 @@ class App extends React.Component {
       text: text
     };
     this.setState({ squares: this.state.squares.concat(newSquare) });
+  }
+
+  deleteSquare = (id, e) => {
+    e.preventDefault();
+    this.setState({
+      squares: this.state.squares.filter(s => s.id !== id)
+    });
   }
 
 }
