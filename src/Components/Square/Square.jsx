@@ -15,13 +15,13 @@ class Square extends React.Component {
             <div className="pa2"
                 onClick={this.speak}>
                 <div className="ba br2 b--light-silver shadow-1 w4 h4 bg-pink dim pointer"
-                    onMouseEnter={this.showDeleteButton}
-                    onMouseLeave={this.hideDeleteButton}>
+                    onMouseLeave={this.hideDeleteButton}
+                    onMouseOver={this.showDeleteButton}>
                     {!this.state.isDeleteButtonHidden &&
-                        <div className="tc delete" onClick={this.props.deleteSquare.bind(null, square.id)}>
-                            <i className="fa fa-trash-alt"/>
+                        <div onClick={this.props.deleteSquare.bind(null, square.id)}>
+                            <i className="delete fa fa-trash-alt"/>
                         </div>}
-                    <p className="db link tc pa4">{square.text}</p>
+                    <p className="db link tc pa3 square-text">{square.text}</p>
                 </div>
             </div>);
     }
