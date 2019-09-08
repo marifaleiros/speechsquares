@@ -3,6 +3,7 @@ import './Square.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { squareThemes } from './SquareThemes'
 import synth from '../../libs/Synth'
+import Zoom from '@material-ui/core/Zoom';
 
 class Square extends React.Component {
     constructor(props) {
@@ -10,7 +11,6 @@ class Square extends React.Component {
         this.state = {
             isDeleteButtonHidden: true
         }
-       
     }
 
     render() {
@@ -20,18 +20,20 @@ class Square extends React.Component {
             theme = squareThemes.red;
         const squareClasses = this.mountSquareClasses(theme);
         return (
-            <div className="pa2"
-                onClick={this.speak}>
-                <div className={squareClasses}
-                    onMouseLeave={this.hideDeleteButton}
-                    onMouseOver={this.showDeleteButton}>
-                    {!this.state.isDeleteButtonHidden &&
-                        <div onClick={this.props.deleteSquare.bind(null, square.id)}>
-                            <i className="delete fa fa-trash-alt" />
-                        </div>}
-                    <p className="db link tc pa2 square-text">{square.text}</p>
+            <Zoom in={true} timeout={200}>
+                <div className="pa2"
+                    onClick={this.speak}>
+                    <div className={squareClasses}
+                        onMouseLeave={this.hideDeleteButton}
+                        onMouseOver={this.showDeleteButton}>
+                        {!this.state.isDeleteButtonHidden &&
+                            <div onClick={this.props.deleteSquare.bind(null, square.id)}>
+                                <i className="delete fa fa-trash-alt" />
+                            </div>}
+                        <p className="db link tc pa2 square-text">{square.text}</p>
+                    </div>
                 </div>
-            </div>);
+            </Zoom>);
     }
 
     mountSquareClasses = (theme) => {
@@ -42,7 +44,7 @@ class Square extends React.Component {
 
         return squareClasses.concat(SPACE, bg, SPACE, border);
     }
-   
+
     speak = () => {
         const { square } = this.props;
         synth.speak(square.text);
