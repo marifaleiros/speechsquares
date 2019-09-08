@@ -5,6 +5,7 @@ import Footer from './Components/Footer/Footer'
 import AddSquareForm from './Components/AddSquareForm/AddSquareForm'
 import SquareList from './Components/SquareList/SquareList'
 import uuid from 'uuid'
+import { squareThemes, pickRandomTheme } from './Components/Square/SquareThemes'
 
 class App extends React.Component {
   constructor() {
@@ -13,23 +14,28 @@ class App extends React.Component {
       squares: [
         {
           id: uuid.v4(),
-          text: "ão"
+          text: "ão",
+          theme: squareThemes.red
         },
         {
           id: uuid.v4(),
-          text: "até"
+          text: "até",
+          theme: squareThemes.blue
         },
         {
           id: uuid.v4(),
-          text: "me"
+          text: "me",
+          theme: squareThemes.green
         },
         {
           id: uuid.v4(),
-          text: "patê"
+          text: "patê",
+          theme: squareThemes.yellow
         },
         {
           id: uuid.v4(),
-          text: "ia"
+          text: "ia",
+          theme: squareThemes.pink
         }
       ]
     }
@@ -46,8 +52,12 @@ class App extends React.Component {
   }
 
   onAddSquare = (text) => {
+    const randomTheme = pickRandomTheme();
+    console.log(randomTheme);
     const newSquare = {
-      text: text
+      id: uuid.v4(),
+      text: text,
+      theme: randomTheme
     };
     this.setState({ squares: this.state.squares.concat(newSquare) });
   }
