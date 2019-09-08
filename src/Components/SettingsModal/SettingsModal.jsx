@@ -6,9 +6,6 @@ import './SettingsModal.css'
 import synth from '../../libs/Synth'
 
 class SettingsModal extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const selectedVoice = synth.getSelectedVoice();
@@ -20,20 +17,20 @@ class SettingsModal extends React.Component {
                 aria-describedby="simple-modal-description"
                 open={this.props.isOpen || false}
                 onClose={this.props.closeModal}>
-                <div className="settingsModal">
+                <div className="bg-near-white pa4 mt6 ba bw4 w-50 center">
                     <h2 id="simple-modal-title">Settings</h2>
                     <TextField
                         select
                         label="Select"
-                        value={selectedVoice}
+                        value={selectedVoice && selectedVoice.name}
                         onChange={this.changeVoice}
                         helperText="Please select the synthesizer language"
                         margin="normal"
                         variant="filled"
                     >
-                        {voices && voices.map(option => (
-                        <MenuItem key={option.voiceUri} value={option.voiceUri}>
-                            {option.name}
+                        {voices && voices.map(v => (
+                        <MenuItem key={v.voiceUri} value={v.voiceUri}>
+                            {v.name}
                         </MenuItem>
                         ))}
                     </TextField>

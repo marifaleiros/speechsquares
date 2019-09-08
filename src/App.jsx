@@ -7,7 +7,6 @@ import SquareList from './Components/SquareList/SquareList'
 import uuid from 'uuid'
 import { squareThemes, pickRandomTheme } from './Components/Square/SquareThemes'
 import SettingsModal from './Components/SettingsModal/SettingsModal'
-import synth from './libs/Synth';
 
 
 class App extends React.Component {

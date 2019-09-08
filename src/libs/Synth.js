@@ -3,7 +3,7 @@ class Synth {
         this.synth = window.speechSynthesis;
         this.synth.onvoiceschanged = function () {
             this.voices = this.synth.getVoices();
-            this.setVoice("Microsoft Maria Desktop - Portuguese(Brazil)");
+            this.setVoice("Google português do Brasil");
         }.bind(this);
     }
 
