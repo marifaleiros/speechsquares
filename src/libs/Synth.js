@@ -20,6 +20,10 @@ class Synth {
         utterThis.voice = this.voice;
         this.synth.speak(utterThis);
     }
+
+    getSelectedVoice() {
+        return this.voice;
+    }
 }
 
 const synth = new Synth();

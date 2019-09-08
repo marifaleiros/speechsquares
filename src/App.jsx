@@ -7,6 +7,8 @@ import SquareList from './Components/SquareList/SquareList'
 import uuid from 'uuid'
 import { squareThemes, pickRandomTheme } from './Components/Square/SquareThemes'
 import SettingsModal from './Components/SettingsModal/SettingsModal'
+import synth from './libs/Synth';
+
 
 class App extends React.Component {
   constructor() {
@@ -48,7 +50,7 @@ class App extends React.Component {
         <Header openSettingsModal={this.openSettingsModal} />
         <AddSquareForm onAddSquare={this.onAddSquare} />
         <SquareList squares={this.state.squares} deleteSquare={this.deleteSquare} />
-        <SettingsModal isOpen={this.state.showSettings} closeModal={this.closeModal} />
+        <SettingsModal isOpen={this.state.showSettings} closeModal={this.closeModal}/>
         <Footer />
       </main>
     );
