@@ -1,6 +1,6 @@
 import React from 'react';
 import Square from '../Square/Square'
-
+    
 class SquareList extends React.Component {
     constructor(props) {
         super(props);
@@ -8,10 +8,12 @@ class SquareList extends React.Component {
     render() {
         const { squares } = this.props;
         return (
-            <div className="flex flex-wrap">
-            {squares.map(s => {
-                return <Square key={s.id} square={s} />
-            })}
+            <div>
+                <div className="flex flex-wrap center">
+                    {squares.map(s => {
+                        return <Square key={s.id} square={s} />
+                    })}
+                </div>
             </div>);
     }
 };

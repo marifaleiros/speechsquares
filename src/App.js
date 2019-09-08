@@ -7,10 +7,10 @@ import SquareList from './Components/SquareList/SquareList'
 import uuid from 'uuid'
 
 class App extends React.Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
-      squares : [
+      squares: [
         {
           id: uuid.v4(),
           text: "ão"
@@ -36,16 +36,24 @@ class App extends React.Component {
   }
   render() {
     return (
-      <main className="app"> 
+      <main className="app">
         <Header />
         <section className="h-100 w-80 center bg-light-gray pb4">
-          <AddSquareForm/>
-          <SquareList squares={this.state.squares}/>
+          <AddSquareForm onAddSquare={this.onAddSquare} />
+          <SquareList squares={this.state.squares} />
         </section>
         <Footer />
       </main>
     );
   }
+
+  onAddSquare = (text) => {
+    const newSquare = {
+      text: text
+    };
+    this.setState({ squares: this.state.squares.concat(newSquare) });
+  }
+
 }
 
 export default App;
