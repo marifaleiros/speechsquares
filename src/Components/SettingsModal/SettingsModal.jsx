@@ -1,7 +1,5 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import './SettingsModal.css'
 import synth from '../../libs/Synth'
 
@@ -19,26 +17,16 @@ class SettingsModal extends React.Component {
                 onClose={this.props.closeModal}>
                 <div className="bg-near-white pa4 mt6 ba bw4 w-50 center">
                     <h2 id="simple-modal-title">Settings</h2>
-                    <TextField
-                        select
-                        label="Select"
-                        value={selectedVoice && selectedVoice.name}
-                        onChange={this.changeVoice}
-                        helperText="Please select the synthesizer language"
-                        margin="normal"
-                        variant="filled"
-                    >
-                        {voices && voices.map(v => (
-                        <MenuItem key={v.voiceUri} value={v.voiceUri}>
-                            {v.name}
-                        </MenuItem>
-                        ))}
-                    </TextField>
+                    <select  value={selectedVoice && selectedVoice.name} onChange={this.changeSelectedVoice}>
+                    {voices && voices.map(v => (
+                        <option key={v.voiceUri} value={v.voiceUri}>{v.name}</option>
+                    ))}
+                    </select>
                 </div>
             </Modal>);
     }
 
-    changeVoice = (e) => {
+    changeSelectedVoice = (e) => {
         console.log(e);
     }
    
