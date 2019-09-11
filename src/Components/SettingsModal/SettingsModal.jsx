@@ -13,7 +13,7 @@ class SettingsModal extends React.Component {
             <Modal
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
-                open={this.props.isOpen || false}
+                open={this.props.isOpen}
                 onClose={this.props.closeModal}>
                 <div className="bg-near-white pa4 mt6 ba bw4 w-50 center">
                     <h2 id="simple-modal-title">Settings</h2>
@@ -29,7 +29,6 @@ class SettingsModal extends React.Component {
     changeSelectedVoice = (e) => {
         console.log(e);
     }
-   
 };
 
 export default SettingsModal;

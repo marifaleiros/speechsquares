@@ -16,15 +16,12 @@ class Square extends React.Component {
 
     render() {
         const { square } = this.props;
-        let theme = square.theme;
-        if (!theme)
-            theme = squareThemes.red;
-        const squareClasses = this.buildSquareClasses(theme);
+        let theme = square.theme || squareThemes.red;
         return (
             <Zoom in={true} timeout={200}>
                 <div className="pa2"
                     onClick={this.speak}>
-                    <div className={squareClasses}
+                    <div className={`sb shadow-1 w4 h4 grow pointer bg-${theme} b-${theme}`}
                         onMouseLeave={this.hideDeleteButton}
                         onMouseOver={this.showDeleteButton}>
                         {!this.state.isDeleteButtonHidden &&
@@ -35,15 +32,6 @@ class Square extends React.Component {
                     </div>
                 </div>
             </Zoom>);
-    }
-
-    buildSquareClasses = (theme) => {
-        const squareClasses = 'sb shadow-1 w4 h4 grow pointer';
-        const SPACE = ' ';
-        let bg = `bg-${theme}`;
-        let border = `b-${theme}`;
-
-        return squareClasses.concat(SPACE, bg, SPACE, border);
     }
 
     speak = () => {

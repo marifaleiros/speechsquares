@@ -7,39 +7,15 @@ import SquareList from './Components/SquareList/SquareList'
 import uuid from 'uuid'
 import { squareThemes, pickRandomTheme } from './Components/Square/SquareThemes'
 import SettingsModal from './Components/SettingsModal/SettingsModal'
-
+import store from './libs/Store'
 
 class App extends React.Component {
   constructor() {
     super()
+    const squares =  store.getSquares();
     this.state = {
-      squares: [
-        {
-          id: uuid.v4(),
-          text: "ão",
-          theme: squareThemes.red
-        },
-        {
-          id: uuid.v4(),
-          text: "até",
-          theme: squareThemes.blue
-        },
-        {
-          id: uuid.v4(),
-          text: "me",
-          theme: squareThemes.green
-        },
-        {
-          id: uuid.v4(),
-          text: "patê",
-          theme: squareThemes.yellow
-        },
-        {
-          id: uuid.v4(),
-          text: "ia",
-          theme: squareThemes.pink
-        }
-      ]
+      squares: squares,
+      showSettings: false
     }
   }
 
