@@ -12,6 +12,7 @@ class SettingsModal extends React.Component {
     }
     render() {
         const voices = synth.getVoices();
+        console.log(voices);
         return (
             <Modal
                 aria-labelledby="simple-modal-title"
