@@ -12,7 +12,6 @@ class Settings extends React.Component {
     }
 
     render() {
-        console.log(this.state.voices);
         return (
             <div className="center mw8 cf bg-gold pa4">
                 <div className="fl w-70">

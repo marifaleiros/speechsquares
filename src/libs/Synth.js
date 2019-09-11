@@ -1,17 +1,27 @@
 class Synth {
     constructor() {
-        this.onVoicesChanged = undefined;
+        this.rate = 0;
+        this.voiceUri = "Google português do Brasil";
         this.synth = window.speechSynthesis;
         this.synth.onvoiceschanged = function () {
             this.voices = this.synth.getVoices();
-            this.setVoice("Google português do Brasil");
+            this.setVoice(this.voiceUri);
             if (this.onVoicesChanged)
                 this.onVoicesChanged();
         }.bind(this);
     }
 
-    setVoice(voiceUri) {
+    setVoiceUri(voiceUri) {
+        this.voiceUri = voiceUri;
+    }
+
+    setVoice(voiceUri){
         this.voice = this.voices.filter((v, i, a) => v.voiceURI === voiceUri)[0];
+    }
+
+    setRate(rate) {
+        if (rate)
+            this.rate = rate;
     }
 
     getVoices() {
@@ -19,6 +29,7 @@ class Synth {
     }
 
     speak(text) {
+        this.setVoice(this.voiceUri);
         const utterThis = new SpeechSynthesisUtterance(text);
         utterThis.voice = this.voice;
         this.synth.speak(utterThis);

@@ -22,6 +22,8 @@ class App extends React.Component {
       selectedVoice: settings.selectedVoice,
       rate: settings.rate
     }
+    synth.setVoiceUri(settings.voiceUri);
+    synth.setRate(settings.rate);
   }
 
   componentDidMount() {
@@ -74,7 +76,7 @@ class App extends React.Component {
   changeSelectedVoice = (e) => {
     const voiceUri = e.target.value;
     this.setState({ selectedVoice: voiceUri });
-    synth.setVoice(voiceUri);
+    synth.setVoiceUri(voiceUri);
   }
 
   changeRate = (e) => {

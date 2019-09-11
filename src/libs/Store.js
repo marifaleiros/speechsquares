@@ -23,7 +23,7 @@ class Store {
   saveSettings(rate, voiceUri) {
     const settings = {
       rate,
-      voiceUri
+      selectedVoice: voiceUri
     }
     this.save(StoreKeys.SETTINGS, settings);
   }

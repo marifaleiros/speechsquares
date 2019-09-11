@@ -17,9 +17,13 @@ class Square extends React.Component {
     render() {
         const { square } = this.props;
         let theme = square.theme || pickRandomTheme();
-        let trimmedText = square.text;
+        let text = square.text;
+        let isTextTrimmed = false;
         if(square.text.length > 4)
-            trimmedText = square.text.substring(0, 4).concat('...');
+        {
+            text = square.text.substring(0, 4).concat('...');
+            isTextTrimmed = true;
+        }
         return (
             <Zoom in={true} timeout={200}>
                 <div className="pa2"
@@ -31,7 +35,8 @@ class Square extends React.Component {
                             <div onClick={this.props.deleteSquare.bind(null, square.id)}>
                                 <i className="delete fa fa-trash-alt" />
                             </div>}
-                        <p className="db link tc pa2 square-text tooltip">{trimmedText} <span class="tooltiptext">{square.text}</span></p>
+                        <p className="db link tc pa2 square-text tooltip">{text} 
+                            {isTextTrimmed && <span class="tooltiptext">{square.text}</span>}</p>
                     </div>
                 </div>
             </Zoom>);
