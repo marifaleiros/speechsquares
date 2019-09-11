@@ -1,9 +1,12 @@
 class Synth {
     constructor() {
+        this.onVoicesChanged = undefined;
         this.synth = window.speechSynthesis;
         this.synth.onvoiceschanged = function () {
             this.voices = this.synth.getVoices();
             this.setVoice("Google português do Brasil");
+            if (this.onVoicesChanged)
+                this.onVoicesChanged();
         }.bind(this);
     }
 

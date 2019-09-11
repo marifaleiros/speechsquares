@@ -1,52 +1,46 @@
 import React from 'react';
-import Modal from '@material-ui/core/Modal';
 import './SettingsModal.css'
 import synth from '../../libs/Synth'
 
-class SettingsModal extends React.Component {
-    constructor() {
-        super()
+class Settings extends React.Component {
+    constructor(){
+        super();
+        synth.onVoicesChanged = this.onVoicesChanged;
         this.state = {
-            selectedVoice: synth.getSelectedVoice()
-        };
+            voices: synth.getVoices()
+        }
     }
+
     render() {
         const voices = synth.getVoices();
-        console.log(voices);
         return (
-            <Modal
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-                open={this.props.isOpen}
-                onClose={this.props.closeModal}>
-                <div className="settingsModal bg-near-white pa4 mt6 ba bw4 w-50 center">
-                    <h2 id="simple-modal-title">Settings</h2>
-
-                    <label htmlFor="voicesSelect">Voice</label><br/>
-                    <select id="voicesSelect" c
-                        className="f6 f5-l bn black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns br--left-ns"
-                        value={this.state.selectedVoice}
-                        onChange={this.changeSelectedVoice}>
+            <div className="center mw8 cf bg-gold pa4">
+                <div className="fl w-70">
+                    <label htmlFor="voicesSelect">Voice</label><br />
+                    <select id="voicesSelect"
+                        className="f6 f5-l bn black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns"
+                        value={this.props.selectedVoice}
+                        onChange={this.props.onSelectedVoiceChanged}>
                         {voices && voices.map(v => (
                             <option key={v.voiceUri} value={v.voiceUri}>{v.name}</option>
                         ))}
                     </select>
-                    <br/><br/><br/>
-                    <label htmlFor="rate">Rate</label><br/>
+                </div>
+                <div className="fl w-30">
+                    <label htmlFor="rate">Rate</label><br />
                     <input id="rate"
-                        className="f6 f5-l bn black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns br--left-ns"
+                        className="f6 f5-l bn black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns"
                         type="number"
                         min="-10"
                         max="10" />
                 </div>
-            </Modal>);
+            </div>
+        );
     }
 
-    changeSelectedVoice = (e) => {
-        const voice = e.target.value;
-        synth.setVoice(voice);
-        this.setState({selectedVoice: voice});
+    onVoicesChanged = () =>{
+        this.setState({voices: synth.getVoices()});
     }
 };
 
-export default SettingsModal;
+export default Settings;

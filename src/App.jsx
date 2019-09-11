@@ -1,49 +1,51 @@
 import React from 'react';
+import uuid from 'uuid'
 import './App.css';
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
-import Menu from './Components/Menu/Menu';
 import AddSquareForm from './Components/AddSquareForm/AddSquareForm'
 import SquareList from './Components/SquareList/SquareList'
-import uuid from 'uuid'
+import Settings from './Components/SettingsModal/SettingsModal'
 import { pickRandomTheme } from './Components/Square/SquareThemes'
-import SettingsModal from './Components/SettingsModal/SettingsModal'
 import store from './libs/Store'
+import synth from './libs/Synth'
 
 class App extends React.Component {
   constructor() {
     super()
     const squares = store.getSquares();
+    const settings = store.getSettings();
     this.state = {
       squares: squares,
-      showSettings: false
+      selectedVoice: settings.selectedVoice,
+      rate: settings.rate
     }
   }
 
-  componentDidMount(){
-    window.addEventListener('beforeunload', this.saveSquares);
+  componentDidMount() {
+    window.addEventListener('beforeunload', this.saveData);
   }
 
   componentWillUnmount() {
-    this.saveSquares();
-    window.removeEventListener('beforeunload', this.saveSquares); // remove the event handler for normal unmounting
+    this.saveData();
+    window.removeEventListener('beforeunload', this.saveData); // remove the event handler for normal unmounting
   }
 
   render() {
     return (
       <main>
         <Header />
-        <Menu openSettingsModal={this.openSettingsModal} />
         <AddSquareForm onAddSquare={this.onAddSquare} />
+        <Settings selectedVoice={this.state.selectedVoice} onSelectedVoiceChanged={this.changeSelectedVoice} />
         <SquareList squares={this.state.squares} deleteSquare={this.deleteSquare} />
-        <SettingsModal isOpen={this.state.showSettings} closeModal={this.closeModal} />
         <Footer />
       </main>
     );
   }
 
-  saveSquares = () => {
+  saveData = () => {
     store.saveSquares(this.state.squares);
+    store.saveSettings(this.state.selectedVoice, this.state.rate);
   }
 
   onAddSquare = (text) => {
@@ -63,11 +65,10 @@ class App extends React.Component {
     });
   }
 
-  openSettingsModal = () => {
-    this.setState({ showSettings: true });
-  }
-  closeModal = () => {
-    this.setState({ showSettings: false });
+  changeSelectedVoice = (e) => {
+    const voiceUri = e.target.value;
+    this.setState({ selectedVoice: voiceUri });
+    synth.setVoice(voiceUri);
   }
 }
 
