@@ -2,7 +2,7 @@ import React from 'react';
 import './Square.css'
 import './SquareThemes.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import { squareThemes } from './SquareThemes'
+import pickRandomTheme from '../../libs/SquareThemes'
 import synth from '../../libs/Synth'
 import Zoom from '@material-ui/core/Zoom';
 
@@ -16,7 +16,7 @@ class Square extends React.Component {
 
     render() {
         const { square } = this.props;
-        let theme = square.theme || squareThemes.red;
+        let theme = square.theme || pickRandomTheme();
         return (
             <Zoom in={true} timeout={200}>
                 <div className="pa2"

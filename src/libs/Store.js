@@ -1,56 +1,41 @@
-
-
 const StoreKeys = {
-  SQUARES: "SQUARES"
+  SQUARES: "SQUARES",
+  SETTINGS: "SETTINGS"
 }
 
 class Store {
-
   getSquares() {
-    const json = window.localStorage.getItem(StoreKeys.SQUARES);
-    // let squares = [
-    //   {
-    //     id: uuid.v4(),
-    //     text: "ão",
-    //     theme: squareThemes.red
-    //   },
-    //   {
-    //     id: uuid.v4(),
-    //     text: "até",
-    //     theme: squareThemes.blue
-    //   },
-    //   {
-    //     id: uuid.v4(),
-    //     text: "me",
-    //     theme: squareThemes.green
-    //   },
-    //   {
-    //     id: uuid.v4(),
-    //     text: "patê",
-    //     theme: squareThemes.yellow
-    //   },
-    //   {
-    //     id: uuid.v4(),
-    //     text: "ia",
-    //     theme: squareThemes.pink
-    //   }
-    // ];
-    const squares = JSON.parse(json);
+    const squares = this.get(StoreKeys.SQUARES);
     return squares || [];
   }
 
   saveSquares(squares) {
-    const json = JSON.stringify(squares);
-    window.localStorage.setItem(StoreKeys.SQUARES, json);
+    this.save(StoreKeys.SQUARES, squares);
   }
 
   getSettings() {
-    let settings = {};
-    return settings;
+    const settings = this.get(StoreKeys.SETTINGS);
+    if (settings && settings.rate)
+      return settings;
+    return { rate: 0, selectedVoice: undefined };
   }
 
-  saveSettings(settings) {
+  saveSettings(rate, voiceUri) {
+    const settings = {
+      rate,
+      voiceUri
+    }
+    this.save(StoreKeys.SETTINGS, settings);
+  }
 
+  save(key, data) {
+    const json = JSON.stringify(data);
+    window.localStorage.setItem(key, json);
+  }
+
+  get(key) {
+    const json = window.localStorage.getItem(key);
+    return JSON.parse(json);
   }
 }
 

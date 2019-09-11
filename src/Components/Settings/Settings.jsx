@@ -1,5 +1,5 @@
 import React from 'react';
-import './SettingsModal.css'
+import './Settings.css'
 import synth from '../../libs/Synth'
 
 class Settings extends React.Component {
@@ -12,7 +12,7 @@ class Settings extends React.Component {
     }
 
     render() {
-        const voices = synth.getVoices();
+        console.log(this.state.voices);
         return (
             <div className="center mw8 cf bg-gold pa4">
                 <div className="fl w-70">
@@ -21,7 +21,7 @@ class Settings extends React.Component {
                         className="f6 f5-l bn black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns"
                         value={this.props.selectedVoice}
                         onChange={this.props.onSelectedVoiceChanged}>
-                        {voices && voices.map(v => (
+                        {this.state.voices && this.state.voices.map(v => (
                             <option key={v.voiceUri} value={v.voiceUri}>{v.name}</option>
                         ))}
                     </select>
@@ -31,8 +31,10 @@ class Settings extends React.Component {
                     <input id="rate"
                         className="f6 f5-l bn black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns"
                         type="number"
+                        value={this.props.rate}
+                        onChange={this.props.onRateChanged}
                         min="-10"
-                        max="10" />
+                        max="10"/>
                 </div>
             </div>
         );

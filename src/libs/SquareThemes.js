@@ -1,4 +1,4 @@
-export const squareThemes = {
+const squareThemes = {
     red: 'red',
     blue: 'blue',
     green: 'green',
@@ -13,6 +13,8 @@ const randomProperty = function (obj) {
     return obj[keys[ keys.length * Math.random() << 0]];
 };
 
-export const pickRandomTheme = function() {
+const pickRandomTheme = function() {
     return randomProperty(squareThemes);
 }
+
+export default pickRandomTheme;

@@ -1,14 +1,16 @@
 import React from 'react';
 import uuid from 'uuid'
-import './App.css';
+
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
 import AddSquareForm from './Components/AddSquareForm/AddSquareForm'
 import SquareList from './Components/SquareList/SquareList'
-import Settings from './Components/SettingsModal/SettingsModal'
-import { pickRandomTheme } from './Components/Square/SquareThemes'
+import Settings from './Components/Settings/Settings'
+
+import pickRandomTheme from './libs/SquareThemes'
 import store from './libs/Store'
 import synth from './libs/Synth'
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -36,7 +38,11 @@ class App extends React.Component {
       <main>
         <Header />
         <AddSquareForm onAddSquare={this.onAddSquare} />
-        <Settings selectedVoice={this.state.selectedVoice} onSelectedVoiceChanged={this.changeSelectedVoice} />
+        <Settings selectedVoice={this.state.selectedVoice} 
+          rate={this.state.rate} 
+          onSelectedVoiceChanged={this.changeSelectedVoice} 
+          onRateChanged={this.changeRate}
+        />
         <SquareList squares={this.state.squares} deleteSquare={this.deleteSquare} />
         <Footer />
       </main>
@@ -45,7 +51,7 @@ class App extends React.Component {
 
   saveData = () => {
     store.saveSquares(this.state.squares);
-    store.saveSettings(this.state.selectedVoice, this.state.rate);
+    store.saveSettings(this.state.rate, this.state.selectedVoice);
   }
 
   onAddSquare = (text) => {
@@ -69,6 +75,12 @@ class App extends React.Component {
     const voiceUri = e.target.value;
     this.setState({ selectedVoice: voiceUri });
     synth.setVoice(voiceUri);
+  }
+
+  changeRate = (e) => {
+    const rate = e.target.value;
+    this.setState({ rate: rate });
+    synth.setRate(rate);
   }
 }
 
