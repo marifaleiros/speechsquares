@@ -1,7 +1,10 @@
+import uuid from 'uuid'
+import { squareThemes, pickRandomTheme } from '../Components/Square/SquareThemes'
+
 class Store {
 
   getSquares() {
-    let squares =  [
+    let squares = [
       {
         id: uuid.v4(),
         text: "ão",
@@ -31,7 +34,21 @@ class Store {
     return squares;
   }
 
+  addSquare(text) {
+    const randomTheme = pickRandomTheme();
+    const newSquare = {
+      id: uuid.v4(),
+      text: text,
+      theme: randomTheme
+    };
+    return newSquare;
+  }
+
   saveSquares(squares) {
+  }
+
+  deleteSquare(id) {
+
   }
 
   getSettings() {
@@ -40,7 +57,7 @@ class Store {
   }
 
   saveSettings(settings) {
-   
+
   }
 }
 
