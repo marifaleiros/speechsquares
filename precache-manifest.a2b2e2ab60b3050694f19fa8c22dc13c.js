@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e946a01a2bd4be885513eee113c3451b",
+    "revision": "db22dcc6fadfdd80dc59639ce34cb24b",
     "url": "/speechsquares/index.html"
   },
   {
-    "revision": "21cf370c59a65cffe709",
+    "revision": "7e4861c128f365a58463",
     "url": "/speechsquares/static/css/2.ebc8bf9f.chunk.css"
   },
   {
-    "revision": "0ce76490c0763ed7ef96",
+    "revision": "3e576f68444b281fea48",
     "url": "/speechsquares/static/css/main.4aab2637.chunk.css"
   },
   {
-    "revision": "21cf370c59a65cffe709",
-    "url": "/speechsquares/static/js/2.200402b9.chunk.js"
+    "revision": "7e4861c128f365a58463",
+    "url": "/speechsquares/static/js/2.6a4f2c9c.chunk.js"
   },
   {
-    "revision": "0ce76490c0763ed7ef96",
-    "url": "/speechsquares/static/js/main.d070a47b.chunk.js"
+    "revision": "3e576f68444b281fea48",
+    "url": "/speechsquares/static/js/main.6dff1fcd.chunk.js"
   },
   {
     "revision": "9492dba93939dcdd91ad",
