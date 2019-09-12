@@ -19,8 +19,7 @@ class Square extends React.Component {
         let theme = square.theme || pickRandomTheme();
         let text = square.text;
         let isTextTrimmed = false;
-        if(square.text.length > 4)
-        {
+        if (square.text.length > 4) {
             text = square.text.substring(0, 4).concat('...');
             isTextTrimmed = true;
         }
@@ -35,7 +34,7 @@ class Square extends React.Component {
                             <div onClick={this.props.deleteSquare.bind(null, square.id)}>
                                 <i className="delete fa fa-trash-alt" />
                             </div>}
-                        <p className="db link tc pa2 square-text tooltip">{text} 
+                        <p className="db link tc pa2 square-text tooltip">{text}
                             {isTextTrimmed && <span class="tooltiptext">{square.text}</span>}</p>
                     </div>
                 </div>
@@ -44,7 +43,9 @@ class Square extends React.Component {
 
     speak = () => {
         const { square } = this.props;
-        synth.speak(square.text);
+        const spoke = synth.speak(square.text);
+        if (!spoke)
+            alert("Aww, something went wrong and I could not speak :(. Maybe your device doesn't support voices, try using this app on the web");
     }
 
     showDeleteButton = () => {

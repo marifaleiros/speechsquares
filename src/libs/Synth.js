@@ -15,8 +15,11 @@ class Synth {
         this.voiceUri = voiceUri;
     }
 
-    setVoice(voiceUri){
+    setVoice(voiceUri) {
+        if (!this.voices || this.voices.lenght === 0)
+            return false;
         this.voice = this.voices.filter((v, i, a) => v.voiceURI === voiceUri)[0];
+        return true;
     }
 
     setRate(rate) {
@@ -29,10 +32,14 @@ class Synth {
     }
 
     speak(text) {
-        this.setVoice(this.voiceUri);
+        const couldSetVoice = this.setVoice(this.voiceUri);
+        if (!couldSetVoice)
+            return false;
+
         const utterThis = new SpeechSynthesisUtterance(text);
         utterThis.voice = this.voice;
         this.synth.speak(utterThis);
+        return true;
     }
 
     getSelectedVoice() {
