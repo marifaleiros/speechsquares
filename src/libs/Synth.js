@@ -36,9 +36,10 @@ class Synth {
         if (!couldSetVoice)
             return false;
 
-        const utterThis = new SpeechSynthesisUtterance(text);
-        utterThis.voice = this.voice;
-        this.synth.speak(utterThis);
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.voice = this.voice;
+        utter.rate = this.rate;
+        this.synth.speak(utter);
         return true;
     }
 

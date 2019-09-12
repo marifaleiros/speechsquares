@@ -32,8 +32,9 @@ class Settings extends React.Component {
                         type="number"
                         value={this.props.rate}
                         onChange={this.props.onRateChanged}
-                        min="-10"
-                        max="10"/>
+                        min="0"
+                        step=".1"
+                        max="5"/>
                 </div>
             </div>
         );
