@@ -39,12 +39,12 @@ class App extends React.Component {
     return (
       <main>
         <Header />
-        <AddSquareForm onAddSquare={this.onAddSquare} />
         <Settings selectedVoice={this.state.selectedVoice} 
           rate={this.state.rate} 
           onSelectedVoiceChanged={this.changeSelectedVoice} 
           onRateChanged={this.changeRate}
         />
+        <AddSquareForm onAddSquare={this.onAddSquare} />
         <SquareList squares={this.state.squares} deleteSquare={this.deleteSquare} />
         <Footer />
       </main>
