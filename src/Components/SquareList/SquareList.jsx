@@ -16,7 +16,7 @@ class SquareList extends React.Component {
     renderEmpty() {
         return (
             <div className="center tc cf pa4">
-                <i class="fa fa-5x fa-cube" aria-hidden="true"></i>
+                <i className="fa fa-5x fa-cube" aria-hidden="true"></i>
                 <p>Add squares to get started :)</p>
             </div>
         )

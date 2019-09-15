@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import uuid from 'uuid'
 
 import Header from './Components/Header/Header'
@@ -6,6 +6,7 @@ import Footer from './Components/Footer/Footer'
 import AddSquareForm from './Components/AddSquareForm/AddSquareForm'
 import SquareList from './Components/SquareList/SquareList'
 import Settings from './Components/Settings/Settings'
+import NotSupportedWarning from './Components/NotSupportedWarning/NotSupportedWarning'
 
 import pickRandomTheme from './libs/SquareThemes'
 import store from './libs/Store'
@@ -39,13 +40,18 @@ class App extends React.Component {
     return (
       <main>
         <Header />
-        <Settings selectedVoice={this.state.selectedVoice} 
-          rate={this.state.rate} 
-          onSelectedVoiceChanged={this.changeSelectedVoice} 
-          onRateChanged={this.changeRate}
-        />
-        <AddSquareForm onAddSquare={this.onAddSquare} />
-        <SquareList squares={this.state.squares} deleteSquare={this.deleteSquare} />
+        {synth.isSupported() ?
+          <Fragment>
+            <Settings selectedVoice={this.state.selectedVoice}
+              rate={this.state.rate}
+              onSelectedVoiceChanged={this.changeSelectedVoice}
+              onRateChanged={this.changeRate}
+            />
+            <AddSquareForm onAddSquare={this.onAddSquare} />
+            <SquareList squares={this.state.squares} deleteSquare={this.deleteSquare} />
+          </Fragment>
+          : <NotSupportedWarning />
+        }
         <Footer />
       </main>
     );
