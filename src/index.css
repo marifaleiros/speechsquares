@@ -11,6 +11,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.bg-blue2{
+  background-color: #00347F
+}
+
 @media (max-width: 600px) {
   .m-center {
     margin-left: auto;

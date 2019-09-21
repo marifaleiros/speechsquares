@@ -11,7 +11,6 @@ import NotSupportedWarning from './Components/NotSupportedWarning/NotSupportedWa
 import pickRandomTheme from './libs/SquareThemes'
 import store from './libs/Store'
 import synth from './libs/Synth'
-import './App.css';
 
 class App extends React.Component {
   constructor() {
