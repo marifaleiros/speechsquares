@@ -7,8 +7,10 @@ class SquareList extends React.Component {
     render() {
         const { squares } = this.props;
         return (
-            <div className="center mw8 list flex flex-wrap bg-near-white">
-                {squares.length === 0 ? this.renderEmpty() : this.renderSquares(squares)}
+            <div className="center mw8 list bg-near-white">
+                <div className="flex m-center flex-wrap">
+                    {squares.length === 0 ? this.renderEmpty() : this.renderSquares(squares)}
+                </div>
             </div>
         );
     }
@@ -22,7 +24,7 @@ class SquareList extends React.Component {
         )
     }
 
-    renderSquares(squares){
+    renderSquares(squares) {
         return squares.map(s => {
             return <Square key={s.id} square={s} deleteSquare={this.props.deleteSquare} />
         })
