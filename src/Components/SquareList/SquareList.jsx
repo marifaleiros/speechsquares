@@ -1,7 +1,7 @@
 import React from 'react';
 import Square from '../Square/Square'
 import './SquareList.css'
-import '@fortawesome/fontawesome-free/css/all.min.css'
+import {FaCube} from 'react-icons/fa'
 
 class SquareList extends React.Component {
     render() {
@@ -18,8 +18,8 @@ class SquareList extends React.Component {
     renderEmpty() {
         return (
             <div className="center tc cf pa4">
-                <i className="fa fa-5x fa-cube" aria-hidden="true"></i>
-                <p>Add squares to get started :)</p>
+                <FaCube className="f-headline" />
+                <p className="f3">Add squares to get started :)</p>
             </div>
         )
     }

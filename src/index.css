@@ -15,6 +15,7 @@ body {
   background-color: #00347F
 }
 
+
 @media (max-width: 600px) {
   .m-center {
     margin-left: auto;

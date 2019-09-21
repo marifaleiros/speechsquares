@@ -1,7 +1,7 @@
 import React from 'react';
 import './Square.css'
 import './SquareThemes.css'
-import '@fortawesome/fontawesome-free/css/all.min.css'
+import { FaTrashAlt } from 'react-icons/fa'
 import pickRandomTheme from '../../libs/SquareThemes'
 import synth from '../../libs/Synth'
 import Zoom from '@material-ui/core/Zoom';
@@ -32,7 +32,7 @@ class Square extends React.Component {
                         onMouseOver={this.showDeleteButton}>
                         {!this.state.isDeleteButtonHidden &&
                             <div onClick={this.props.deleteSquare.bind(null, square.id)}>
-                                <i className="delete fa fa-trash-alt" />
+                                <FaTrashAlt className="delete" />
                             </div>}
                         <p className="db link tc pa2 square-text tooltip">{text}
                             {isTextTrimmed && <span class="tooltiptext">{square.text}</span>}</p>
