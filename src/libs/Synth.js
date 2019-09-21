@@ -4,11 +4,14 @@ class Synth {
         this.voiceUri = "Google português do Brasil";
         this.synth = window.speechSynthesis;
         this.synth.onvoiceschanged = function () {
+            console.log('voices changed');
             this.voices = this.synth.getVoices();
+            console.log(this.voices);
             this.setVoice(this.voiceUri);
             if (this.onVoicesChanged)
                 this.onVoicesChanged();
         }.bind(this);
+        this.speak("hi", 0); //forces voices to load on mobile
     }
 
     setVoiceUri(voiceUri) {
@@ -16,10 +19,16 @@ class Synth {
     }
 
     setVoice(voiceUri) {
-        if (!this.voices || this.voices.lenght === 0)
+        if (!this.voices || this.voices.lenght === 0) {
+            this.voices = this.synth.getVoices();
+        }
+        try {
+            this.voice = this.voices.filter((v, i, a) => v.voiceURI === voiceUri)[0];
+            return true;
+        }
+        catch{
             return false;
-        this.voice = this.voices.filter((v, i, a) => v.voiceURI === voiceUri)[0];
-        return true;
+        }
     }
 
     setRate(rate) {
@@ -31,16 +40,27 @@ class Synth {
         return this.voices;
     }
 
-    speak(text) {
+    speak(text, volume) {
         const couldSetVoice = this.setVoice(this.voiceUri);
-        if (!couldSetVoice)
-            return false;
+        if(!couldSetVoice)
+            console.error("Could not set voice");
 
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.voice = this.voice;
-        utter.rate = this.rate;
-        this.synth.speak(utter);
-        return true;
+        try {
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.voice = this.voice;
+            utter.rate = this.rate;
+            if (volume !== undefined)
+                utter.volume = volume
+            this.synth.speak(utter);
+            return true;
+        }
+        catch{
+            return false;
+        }
+    }
+
+    isSupported() {
+        return ('speechSynthesis' in window);
     }
 
     getSelectedVoice() {
