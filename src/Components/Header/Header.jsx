@@ -8,7 +8,7 @@ const Header = () => {
     <h1 className="title gold f3 f2-m f1-l mv3">
       Speech Squares
     </h1>
-    <h3>A tool to help language learners</h3>
+    <h2>A tool to help language learners</h2>
   </header>);
 };
 

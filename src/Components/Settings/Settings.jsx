@@ -28,7 +28,7 @@ class Settings extends React.Component {
                 <div className="fl w-100 w-30-ns mt4 mt0-ns">
                     <label htmlFor="rate">Rate</label><br />
                     <input id="rate"
-                        className="f6 f5-l bn black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns"
+                        className="f6 f5-l bn black-80 bg-white pa3 lh-solid w-100 br2-ns"
                         type="number"
                         value={this.props.rate}
                         onChange={this.props.onRateChanged}
