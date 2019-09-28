@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/speechsquares/static/css/main.a79207cd.chunk.css",
-    "main.js": "/speechsquares/static/js/main.0f1c97e4.chunk.js",
-    "main.js.map": "/speechsquares/static/js/main.0f1c97e4.chunk.js.map",
+    "main.css": "/speechsquares/static/css/main.4dc3a8e7.chunk.css",
+    "main.js": "/speechsquares/static/js/main.2cc074f5.chunk.js",
+    "main.js.map": "/speechsquares/static/js/main.2cc074f5.chunk.js.map",
     "runtime~main.js": "/speechsquares/static/js/runtime~main.e0103bbd.js",
     "runtime~main.js.map": "/speechsquares/static/js/runtime~main.e0103bbd.js.map",
     "static/css/2.31dafeb2.chunk.css": "/speechsquares/static/css/2.31dafeb2.chunk.css",
     "static/js/2.a1484e1c.chunk.js": "/speechsquares/static/js/2.a1484e1c.chunk.js",
     "static/js/2.a1484e1c.chunk.js.map": "/speechsquares/static/js/2.a1484e1c.chunk.js.map",
     "index.html": "/speechsquares/index.html",
-    "precache-manifest.9ca449524b4808b404814849d280085c.js": "/speechsquares/precache-manifest.9ca449524b4808b404814849d280085c.js",
+    "precache-manifest.296d745d74272551f05d8131275f6c73.js": "/speechsquares/precache-manifest.296d745d74272551f05d8131275f6c73.js",
     "service-worker.js": "/speechsquares/service-worker.js",
     "static/css/2.31dafeb2.chunk.css.map": "/speechsquares/static/css/2.31dafeb2.chunk.css.map",
-    "static/css/main.a79207cd.chunk.css.map": "/speechsquares/static/css/main.a79207cd.chunk.css.map"
+    "static/css/main.4dc3a8e7.chunk.css.map": "/speechsquares/static/css/main.4dc3a8e7.chunk.css.map"
   }
 }
